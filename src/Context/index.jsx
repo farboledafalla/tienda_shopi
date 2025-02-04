@@ -1,11 +1,18 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ShoppingCartContext = createContext();
+export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
+   const [count, setCount] = useState(0);
+
+   //Probaremos si funciona el contador para el carrito de compras
+   console.log('count: ', count);
+
    return (
-      <ShoppingCartContext.Provider>{children}</ShoppingCartContext.Provider>
+      <ShoppingCartContext.Provider value={{ count, setCount }}>
+         {children}
+      </ShoppingCartContext.Provider>
    );
 };
 
